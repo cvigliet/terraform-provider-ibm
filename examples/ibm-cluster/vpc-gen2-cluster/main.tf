@@ -48,7 +48,7 @@ resource "ibm_kms_key" "test" {
 }
 
 resource "ibm_container_vpc_cluster" "cluster" {
-  name              = "${var.cluster_name}random_id.name1.hex"
+  name              = "${var.cluster_name}"
   vpc_id            = ibm_is_vpc.vpc1.id
   kube_version      = var.kube_version
   flavor            = var.flavor
