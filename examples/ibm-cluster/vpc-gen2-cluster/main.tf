@@ -39,7 +39,7 @@ resource "ibm_resource_instance" "kms_instance1" {
     plan              = "tiered-pricing"
     location          = "us-south"
 }
-  
+
 resource "ibm_kms_key" "test" {
     instance_id = "${ibm_resource_instance.kms_instance1.guid}"
     key_name = "test_root_key"
@@ -48,7 +48,7 @@ resource "ibm_kms_key" "test" {
 }
 
 resource "ibm_container_vpc_cluster" "cluster" {
-  name              = "${var.cluster_name}${random_id.name1.hex}"
+  name              = "${var.cluster_name}random_id.name1.hex"
   vpc_id            = ibm_is_vpc.vpc1.id
   kube_version      = var.kube_version
   flavor            = var.flavor
@@ -97,4 +97,3 @@ resource "ibm_container_bind_service" "bind_service" {
 data "ibm_container_cluster_config" "cluster_config" {
   cluster_name_id = ibm_container_vpc_cluster.cluster.id
 }
-
